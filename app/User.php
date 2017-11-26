@@ -75,9 +75,9 @@ class User extends Authenticatable
      */
     public static function canDo($permissions)
     {
+        $hit = 0;
         $user = self::getAuthenicatedUserFromAdminGuard();
         
-
         $perms = ! is_array($permissions) ? (array) $permissions : $permissions; 
 
         $permissions =  Permission::whereIn('name', $perms)->with('roles')->get();
@@ -87,9 +87,9 @@ class User extends Authenticatable
          * Count of $perms and $permissions must always be equal,
          * otherwise return false
          */
-        if (count($perms) != count($permissions)) {
-            return false;
-        }
+        // if (count($perms) != count($permissions)) {
+        //     return false;
+        // }
 
         // very slow code
         // refactor this
@@ -99,9 +99,8 @@ class User extends Authenticatable
 
                 foreach (self::getRoles($user) as $userrole) {
                     
-                    if ($userrole->pivot->role_id !== $role->pivot->role_id) {
-                        
-                        return false;
+                    if ($userrole->pivot->role_id === $role->pivot->role_id) {
+                        $hit++;
                     }
 
                     $userrole = null;
@@ -112,7 +111,8 @@ class User extends Authenticatable
             $roles = null;
         }
 
-        return true;
+
+        return $hit > 0 ? true : false;
         
     }
 

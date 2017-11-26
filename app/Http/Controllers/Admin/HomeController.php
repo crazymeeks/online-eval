@@ -34,7 +34,7 @@ class HomeController extends Controller
                     'user' => 'test',
                 ];
 
-        //return $this->user->canDo(['evaluate', 'mark-validates']);
+        //return App\User::canDo(['evaluate', 'mark-validate']);
         // if ($this->user->canDo(['evaluate', 'mark-validate'])) {
         //     return ['yes'];
         // }
