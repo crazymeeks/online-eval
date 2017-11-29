@@ -28,4 +28,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 		Route::get('/', 'LoginController@loginView');
 		Route::post('/post-login', 'LoginController@postAuthenticate');
 	});
+
+	Route::post('/logout', 'LogoutController@logout');
 });
