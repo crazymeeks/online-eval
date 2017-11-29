@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('middlename')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('remember')->nullable();
+            $table->string('remember_token')->nullable();
             $table->integer('status')
                   ->unsigned()
                   ->comment('0=Inactive; 1=Active; 2=Deleted')

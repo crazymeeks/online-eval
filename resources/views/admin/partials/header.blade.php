@@ -217,8 +217,8 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <!--img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"-->
+              <span class="hidden-xs">{{\Auth::guard('admin')->user()->firstname}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -251,7 +251,10 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <form>
+                  <a href="#" class="btn btn-default btn-flat btn-signout">Sign out</a>
+                    
+                  </form>
                 </div>
               </li>
             </ul>
@@ -265,3 +268,27 @@
 
     </nav>
   </header>
+  @section('scripts')
+   <script type="text/javascript" src="{{ asset('assets/admin/dist/js/admin.js') }}">
+
+    /*$(document).ready(function(){
+      $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+      $('.btn-signout').on('click', function(){
+        $.ajax({
+          url: 'admin/logout',
+          type: 'POST',
+          success: function(response){
+            console.log(response);
+          }
+        });
+      });
+    });*/
+  </script>
+  <script type="text/javascript">
+    Module.initAll();
+  </script>
+  @endsection

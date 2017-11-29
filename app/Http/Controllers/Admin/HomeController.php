@@ -39,7 +39,7 @@ class HomeController extends Controller
         //     return ['yes'];
         // }
         // return ['no'];
-
+                
         if(App\User::hasRole(['admin'])){
             $data = array_merge($data, $this->pageContentTitle);
 
