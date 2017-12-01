@@ -16,7 +16,8 @@ class CreateQceTable extends Migration
             $table->increments('id');
             $table->string('appendix')->nullable()->comment('Sample content: Appendix B');
             $table->string('nbc_number')->comment('The QCE of the NBC No');
-            $table->string('title')->nullable()->comment('Instrument for Instructor/Teaching Effectivenes');
+            $table->string('description')->nullable()->comment('Instrument for Instructor/Teaching Effectivenes');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

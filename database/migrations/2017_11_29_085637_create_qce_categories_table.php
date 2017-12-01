@@ -15,7 +15,7 @@ class CreateQceCategoriesTable extends Migration
         Schema::create('qce_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('qce_id')->unsigned()->comment('Primary key of qce table');
-            $table->string('name')->unique();
+            $table->string('category')->unique();
             $table->string('index')->nullable()->comment('Example: A');
 
             $table->foreign('qce_id')->references('id')->on('qce')->onDelete('cascade');

@@ -39,20 +39,27 @@
             <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
-        @if(App\User::canDo(['evaluate','mark-validate']))
-        <li class="treeview">
-          <a href="{{ url('/admin/qce') }}">
-            <i class="fa fa-files-o"></i>
-            <span>QCE</span>
+        @if(App\User::canDo(['faculty-coordinator','mark-validate']))
+        <li class="treeview {{$qce}}">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>QCE</span>
             <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('admin/qce/research') }}"><i class="fa fa-circle-o"></i>Instruction</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Research</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Extension</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Production</a></li>
+            <li><a href="{{ url('/admin/qce') }}"><i class="fa fa-circle-o"></i> Add new</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Others
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{ url('/admin/qce/category') }}"><i class="fa fa-circle-o"></i> Add new category</a></li>
+                <li><a href="{{ url('/admin/qce/category/question') }}"><i class="fa fa-circle-o"></i> Add new question</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         @endif

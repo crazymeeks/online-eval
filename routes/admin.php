@@ -16,7 +16,19 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 	 |------------------------------------------
 	 */
 	Route::group(['prefix' => 'qce'], function(){
-		Route::get('/research', 'QceController@researchView');
+		Route::get('/', 'QceController@addFormView');
+		Route::post('/addnew', 'QceController@addNew');
+
+		Route::group(['prefix' => 'category'], function(){
+			Route::get('/', 'QceController@qceCategoryView');
+
+			Route::post('/crud', 'QceController@modifyCategoryResource');
+
+			Route::group(['prefix' => 'question'], function(){
+				Route::get('/', 'QceController@qceCategoryQuestionView');
+				Route::post('/crud', 'QceController@modifyCategoryQuestionResource');
+			});
+		});
 	});
 
 	/*
